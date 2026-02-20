@@ -1,0 +1,481 @@
+/* SlicePress — Theme-Adaptive Frontend Styles
+ * Automatically adapts to the active WordPress/WooCommerce theme.
+ * Uses CSS custom properties with sensible fallbacks.
+ * All colors derived from theme or use neutral defaults.
+ */
+
+/* ==========================================================================
+   Theme Detection Variables
+   These are set by a tiny JS snippet and fall back to light-theme defaults.
+   --slicepress-accent:     WooCommerce button color (from .button.alt)
+   --slicepress-accent-h:   Hover variant
+   --slicepress-bg:         Theme body background
+   --slicepress-text:       Theme body text color
+   --slicepress-card-bg:    Card background (auto: light or dark based on theme)
+   --slicepress-card-border Card border color
+   --slicepress-muted:      Muted/secondary text
+   --slicepress-input-bg:   Form input background
+   --slicepress-input-border Form input border
+   --slicepress-is-dark:    0 or 1 (set by JS)
+   ========================================================================== */
+
+:root {
+    --slicepress-accent: #0073aa;
+    --slicepress-accent-h: #005f8c;
+    --slicepress-bg: #ffffff;
+    --slicepress-text: #333333;
+    --slicepress-card-bg: rgba(255, 255, 255, 0.92);
+    --slicepress-card-border: rgba(0, 0, 0, 0.12);
+    --slicepress-muted: rgba(0, 0, 0, 0.5);
+    --slicepress-input-bg: rgba(0, 0, 0, 0.04);
+    --slicepress-input-border: rgba(0, 0, 0, 0.15);
+    --slicepress-overlay-bg: rgba(255, 255, 255, 0.85);
+    --slicepress-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    --slicepress-radius: 8px;
+}
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+
+.slicepress-card {
+    background: var(--slicepress-card-bg);
+    border: 1px solid var(--slicepress-card-border);
+    border-radius: var(--slicepress-radius);
+    padding: 16px;
+    box-shadow: var(--slicepress-shadow);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-family: inherit;
+    color: var(--slicepress-text);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.slicepress-card-title {
+    font-size: 15px;
+    margin: 0 0 12px 0;
+    color: var(--slicepress-text);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.slicepress-step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    background: var(--slicepress-accent);
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   Upload
+   ========================================================================== */
+
+.slicepress-upload-label {
+    display: block;
+    background: var(--slicepress-input-bg);
+    border: 2px dashed var(--slicepress-input-border);
+    color: var(--slicepress-muted);
+    padding: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.slicepress-upload-label:hover {
+    border-color: var(--slicepress-accent);
+    color: var(--slicepress-accent);
+}
+
+.slicepress-file-input {
+    display: none;
+}
+
+/* ==========================================================================
+   Buttons — small utility buttons inherit theme neutrals
+   ========================================================================== */
+
+.slicepress-view-buttons {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.slicepress-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--slicepress-input-bg);
+    color: var(--slicepress-text);
+    border: 1px solid var(--slicepress-input-border);
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, opacity 0.15s;
+    font-family: inherit;
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.slicepress-btn:hover {
+    border-color: var(--slicepress-accent);
+    color: var(--slicepress-accent);
+}
+
+.slicepress-btn:active {
+    opacity: 0.8;
+}
+
+.slicepress-view-buttons .slicepress-btn {
+    flex: 1;
+    padding: 6px 4px;
+    font-size: 12px;
+}
+
+.slicepress-btn-block {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+/* Accent button (Smart Orient) */
+.slicepress-btn-accent {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.slicepress-btn-accent:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.slicepress-btn-accent.analyzing {
+    animation: slicepress-pulse 1.2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes slicepress-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Primary button — uses WooCommerce accent color */
+.slicepress-btn-primary {
+    background: var(--slicepress-accent);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.slicepress-btn-primary:hover:not(:disabled) {
+    background: var(--slicepress-accent-h);
+    color: #fff;
+}
+
+.slicepress-btn-primary:active:not(:disabled) {
+    opacity: 0.85;
+}
+
+.slicepress-btn-primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Toggles
+   ========================================================================== */
+
+.slicepress-toggle-row {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.slicepress-toggle {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    background: var(--slicepress-input-bg);
+    border: 1px solid var(--slicepress-input-border);
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 0.15s;
+}
+
+.slicepress-toggle:hover {
+    border-color: var(--slicepress-accent);
+}
+
+.slicepress-toggle input[type="checkbox"] {
+    display: none;
+}
+
+.slicepress-toggle-track {
+    width: 28px;
+    height: 14px;
+    min-width: 28px;
+    background: var(--slicepress-input-border);
+    border-radius: 7px;
+    position: relative;
+    transition: background 0.2s;
+}
+
+.slicepress-toggle-track::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    transition: left 0.2s;
+}
+
+.slicepress-toggle input:checked + .slicepress-toggle-track {
+    background: var(--slicepress-accent);
+}
+
+.slicepress-toggle input:checked + .slicepress-toggle-track::after {
+    left: 16px;
+}
+
+.slicepress-toggle-text {
+    color: var(--slicepress-muted);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   Stats Card
+   ========================================================================== */
+
+.slicepress-stats-card .slicepress-card-title {
+    font-size: 13px;
+    color: var(--slicepress-muted);
+    margin-bottom: 10px;
+}
+
+.slicepress-stat {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.slicepress-stat:last-child {
+    margin-bottom: 0;
+}
+
+.slicepress-stat-label {
+    color: var(--slicepress-muted);
+}
+
+.slicepress-stat-value {
+    color: var(--slicepress-text);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Form Groups
+   ========================================================================== */
+
+.slicepress-form-group {
+    margin-bottom: 10px;
+}
+
+.slicepress-form-group label {
+    display: block;
+    font-size: 12px;
+    color: var(--slicepress-muted);
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.slicepress-form-group select {
+    width: 100%;
+    padding: 8px 10px;
+    background: var(--slicepress-input-bg);
+    border: 1px solid var(--slicepress-input-border);
+    border-radius: 4px;
+    color: var(--slicepress-text);
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.slicepress-form-group select:focus {
+    outline: none;
+    border-color: var(--slicepress-accent);
+    box-shadow: 0 0 0 1px var(--slicepress-accent);
+}
+
+/* ==========================================================================
+   Results Card
+   ========================================================================== */
+
+.slicepress-results-card {
+    border-color: var(--slicepress-accent);
+}
+
+.slicepress-result-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    padding: 3px 0;
+    color: var(--slicepress-muted);
+}
+
+.slicepress-result-row span:last-child {
+    color: var(--slicepress-text);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.slicepress-result-total {
+    border-top: 1px solid var(--slicepress-card-border);
+    margin-top: 6px;
+    padding-top: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--slicepress-text);
+}
+
+.slicepress-result-total span:last-child {
+    color: var(--slicepress-accent);
+    font-size: 17px;
+}
+
+.slicepress-result-meta {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0 12px;
+    color: var(--slicepress-muted);
+    font-size: 12px;
+}
+
+/* ==========================================================================
+   Overlays
+   ========================================================================== */
+
+.slicepress-hint {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: var(--slicepress-muted);
+    font-size: 13px;
+    pointer-events: none;
+}
+
+.slicepress-hint.hidden {
+    display: none;
+}
+
+.slicepress-drop-overlay {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--slicepress-accent) 8%, transparent);
+    border: 2px dashed var(--slicepress-accent);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--slicepress-accent);
+    pointer-events: none;
+    z-index: 10;
+    border-radius: var(--slicepress-radius);
+}
+
+.slicepress-drop-overlay.active {
+    display: flex;
+}
+
+.slicepress-loading-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--slicepress-overlay-bg);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 20;
+}
+
+.slicepress-loading-overlay.active {
+    display: flex;
+}
+
+.slicepress-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid var(--slicepress-card-border);
+    border-top-color: var(--slicepress-accent);
+    border-radius: 50%;
+    animation: slicepress-spin 0.8s linear infinite;
+}
+
+@keyframes slicepress-spin {
+    to { transform: rotate(360deg); }
+}
+
+.slicepress-loading-text {
+    margin-top: 10px;
+    color: var(--slicepress-muted);
+    font-size: 14px;
+}
+
+.slicepress-error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--slicepress-card-bg);
+    color: var(--slicepress-text);
+    padding: 20px 32px;
+    border-radius: var(--slicepress-radius);
+    border: 1px solid #e74c3c;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    display: none;
+    font-weight: 500;
+    font-size: 14px;
+    z-index: 30;
+    text-align: center;
+    max-width: 90%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.slicepress-error.visible {
+    display: block;
+    animation: slicepress-pop 0.2s ease-out;
+}
+
+@keyframes slicepress-pop {
+    0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
