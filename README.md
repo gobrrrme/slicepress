@@ -74,4 +74,3 @@ Available on [WordPress.org](https://wordpress.org/plugins/slicepress/) once app
 
 ---
 
-*Built by [Druck Hoch Drei](https://druckhochdrei.com)*
