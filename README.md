@@ -1,4 +1,4 @@
-# SlicePress - 3D Print Quoting for WooCommerce
+# SlicePress — 3D Print Quoting for WooCommerce
 
 **Instant 3D print quotes, right on your WooCommerce product page.**
 
@@ -62,7 +62,7 @@ You download the processed 3MF from the order screen
 
 ## License
 
-GPL-2.0-or-later. The plugin is open-source.
+GPL-2.0-or-later. The plugin is open source — the SlicePress backend and slicer service are proprietary.
 
 ---
 
@@ -71,3 +71,7 @@ GPL-2.0-or-later. The plugin is open-source.
 **[→ Download latest release (v1.1.2)](https://github.com/gobrrrme/slicepress/releases/latest)**
 
 Available on [WordPress.org](https://wordpress.org/plugins/slicepress/) once approved.
+
+---
+
+*Built by [Druck Hoch Drei](https://druckhochdrei.com)*
