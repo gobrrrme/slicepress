@@ -4,7 +4,7 @@
 
 Customers upload an STL or 3MF file, see a live 3D preview, pick material and quality, get an instant price quote based on real slicer data — and add it to cart. No back-and-forth emails. No manual calculations.
 
-![SlicePress Demo](https://slicepress.druckhochdrei.com/static/DemoRecording.gif)
+![SlicePress Demo](assets/demo.gif)
 
 ---
 
@@ -71,6 +71,4 @@ GPL-2.0-or-later. The plugin is open source — the SlicePress backend and slice
 **[→ Download latest release (v1.1.2)](https://github.com/gobrrrme/slicepress/releases/latest)**
 
 Available on [WordPress.org](https://wordpress.org/plugins/slicepress/) once approved.
-
----
 
